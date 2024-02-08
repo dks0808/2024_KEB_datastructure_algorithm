@@ -5,7 +5,7 @@ import time
 #         result = result * i
 #         return result
 
-def Combination(n,r) -> int:
+def Combination(n,r) -> int: # SRP, OCP violation
     """
     this is combination func
     :param n:
@@ -18,6 +18,8 @@ def Combination(n,r) -> int:
     end = time.time()
     print(f"during time : {end - start}")
     return int(numerator / denominator)
+# 단일책임의 원칙에 위배되는 것임 데코레이터를 사용해서 개방폐쇄 원칙 준수
+
 
 def factorial(num) -> int:
     """
