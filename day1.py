@@ -1,13 +1,20 @@
-import mymath
-# recursion func is more slow than repeat
-# because repeat is use register or cash memory recursion func is use main memory
+import random
+rnumber = random.randint(1, 100)
+
+count = 1
+tf = True
 
 
+while tf:
 
-if __name__ == "__main__": # 메인인 함수를 알려주기 위함. 전역 변수를 정해주는 것.여러개의
-    n = int(input("Enter entire number : "))
-    r = int(input("Input you want combinations : "))
-
-    print(f"{n}C{r} = {mymath.Combination(n,r)}")
-
-
+    number = int(input("Enter the number : " ))
+    if number == rnumber:
+        print("Good")
+        print(f"You tried {count} times")
+        tf = False
+    elif number < rnumber:
+        print("Its low!")
+        count = count +1
+    elif number > rnumber:
+        print("Its high!")
+        count = count +1
