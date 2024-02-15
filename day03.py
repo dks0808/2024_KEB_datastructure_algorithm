@@ -50,16 +50,17 @@ def fibo_memoization(number: int) -> int:
 
 
 
-n = int(input("Input number : "))
+n = int(input("Input number : ")) #input box
 
-for i in range(0, n):
-    print(i)
-    print(fibo_memoization(i))
-print("===========================")
-for i in range(0, n):
-    print(i)
-    print(fibo_recursion(i))
-print("===========================")
-for i in range(0, n):
-    print(i)
-    print(fibo_repetition(i))
+print(f"fibonacci{n} = {fibo_memoization(n)}") #lable
+# for i in range(0, n):
+#     print(i)
+#     print(fibo_memoization(i))
+# print("===========================")
+# for i in range(0, n):
+#     print(i)
+#     print(fibo_recursion(i))
+# print("===========================")
+# for i in range(0, n):
+#     print(i)
+#     print(fibo_repetition(i))
