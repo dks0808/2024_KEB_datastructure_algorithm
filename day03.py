@@ -1,59 +1,17 @@
-import tkinter as tk
+## 함수 선언 부분 ##
+import random
+def insertionSort(ary) :
+	n = len(ary)
+	for end in range(1, n) :
+		for cur in range(end, 0, -1) :
+			if ( ary[cur-1] > ary[cur] ) :
+				ary[cur-1], ary[cur] = ary[cur], ary[cur-1]
+	return ary
 
-# memo[0]=0
-# memo[1] =1
-def fibo_memoization(number: int) -> int:
-    """
-    fibonacci function by recursion with memoization.
-    :param number: integer number
-    :return: integer number
-    """
-    global memo
-    if memo[number] is not None:
-        return memo[number]
-    if number < 2:
-        result = number
-    else:
-        result = fibo_memoization(number-1) + fibo_memoization(number-2)
-        memo[number] = result
-    return result
+## 전역 변수 선언 부분 ##
+dataAry = [random.randint(0,100) for _ in range(10)]
 
-def process_fibonacci(number):
-    number = int(en_input_number.get())
-    lbl_display_fibonacci_result.config(text = f"fibonacci({number}) = {fibo_memoization(number)}")
-
-if (__name__ == "__main__"):
-    # UI not a functional part
-    w = tk.Tk()
-    w.title("Fibonacci")
-    w.geometry("250x150")
-    lbl_display_fibonacci_result = tk.Label(w, text = "Fibonacci by memoization")
-    en_input_number = tk.Entry(w)
-    btn_click = tk.Button(w, text = "Click", command=process_fibonacci) #bind function
-
-    lbl_display_fibonacci_result.pack()
-    en_input_number.pack()
-    btn_click.pack(fill = "x")
-    en_input_number.focus()
-    w.mainloop()
-
-
-
-
-# n = int(input("Input number : ")) #input box
-#
-# print(f"fibonacci{n} = {fibo_memoization(n)}") #lable
-#
-#
-
-# for i in range(0, n):
-#     print(i)
-#     print(fibo_memoization(i))
-# print("===========================")
-# for i in range(0, n):
-#     print(i)
-#     print(fibo_recursion(i))
-# print("===========================")
-# for i in range(0, n):
-#     print(i)
-#     print(fibo_repetition(i))
+## 메인 코드 부분 ##
+print('정렬 전 -->', dataAry)
+dataAry = insertionSort(dataAry)
+print('정렬 후 -->', dataAry)
