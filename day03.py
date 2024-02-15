@@ -1,22 +1,65 @@
-## 함수 선언 부분 ##
-def palindrome(pStr) :
-	if len(pStr) <= 1 :
-		return True
+def fibo_recursion(number: int) -> int:
+    """
+    fibonacci function by recursion.
+    :param number: integer number
+    :return: integer number
+    """
+    if number == 0:
+        return 0
+    elif number == 1:
+        return 1
+    else:
+        return fibo_recursion(number - 1) + fibo_recursion(number - 2)
 
-	if pStr[0] != pStr[-1] :
-		return False
 
-	return palindrome(pStr[1:len(pStr)-1])
+def fibo_repetition(number: int) -> int:
+    """
+    fibonacci function by repetition.
+    :param number: integer number
+    :return: integer number
+    """
+    a = 0
+    b = 1
+    for _ in range(number):
+        a, b = b, a + b
+    return a
 
 
-## 전역 변수 선언 부분 ##
-strAry = ["reaver", "kayak", "Borrow or rob", "주유소의 소유주", "야 너 이번주 주번이 너야", "살금 살금"]
+# memo = [0 if i == 0 else 1 if i == 1 else None for i in range(100)]
+memo = [0, 1] + [None] * (100-1)
 
-## 메인 코드 부분 ##
-for testStr in strAry :
-	print(testStr, end = '--> ' )
-	testStr = testStr.lower().replace(' ','')
-	if palindrome(testStr) :
-		print('O')
-	else :
-		print('X')
+
+
+# memo[0]=0
+# memo[1] =1
+def fibo_memoization(number: int) -> int:
+    """
+    fibonacci function by recursion with memoization.
+    :param number: integer number
+    :return: integer number
+    """
+    global memo
+    if memo[number] is not None:
+        return memo[number]
+    if number < 2:
+        result = number
+    else:
+        result = fibo_memoization(number-1) + fibo_memoization(number-2)
+        memo[number] = result
+    return result
+
+
+
+n = int(input("Input number : "))
+
+for i in range(0, n):
+    print(i)
+    print(fibo_memoization(i))
+print("===========================")
+for i in range(0, n):
+    print(i)
+    print(fibo_recursion(i))
+print("===========================")
+for i in range(0, n):
+    print(i)
+    print(fibo_repetition(i))
